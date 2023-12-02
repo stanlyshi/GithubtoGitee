@@ -61,7 +61,7 @@ jobs:
           git clone --depth 1 -b ${{ matrix.githubBranchName }} https://github.com/${{ matrix.githubUserName }}/${{ matrix.githubRepoName }} $githubRepoDir
           cd $githubRepoDir
           echo "commitHash=$(git rev-parse HEAD)" >> $GITHUB_OUTPUT
-          rm -rf ${{ env.githubRepoDir }}
+          rm -rf $githubRepoDir
           
       - name: Compare Commit Hash
         id: cacheHash
