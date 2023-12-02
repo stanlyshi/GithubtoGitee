@@ -19,9 +19,9 @@ on:
         type: boolean
 
   # 启动定时请取消下面的“#”
-  #schedule:
-   #- cron: 30 4-16/3 * * 1-5
-   #- cron: 30 0-16/3 * * 0,6
+  schedule:
+   - cron: 30 4-16/3 * * 1-5
+   - cron: 30 0-16/3 * * 0,6
    
 env:
   DESTINATION_HOST: gitee.com
