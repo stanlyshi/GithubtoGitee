@@ -53,11 +53,6 @@ jobs:
             giteeUserName: stanlyshi
             giteeRepoName: roag
     steps:
-      - name: Checkout
-        uses: actions/checkout@v4
-        with:
-          fetch-depth: 0
-          
       - name: Get Commit Hash
         id: getHash
         run: |
