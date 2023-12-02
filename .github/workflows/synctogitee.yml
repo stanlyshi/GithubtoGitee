@@ -17,7 +17,12 @@ on:
         required: false
         default: false
         type: boolean
-
+      ENABLE_SSH:
+        description: '开启SSH连接'
+        required: false
+        default: false
+        type: boolean
+        
   # 启动定时请取消下面的“#”
   schedule:
    - cron: 30 4-16/3 * * 1-5
@@ -73,7 +78,11 @@ jobs:
         if: steps.cacheHash.outputs.cache-hit != 'true'
         run: |
           echo ${{ steps.getHash.outputs.commitHash }} | tee .commitHash
-          
+
+      - name: SSH远程连接（make menuconfig）
+        if: env.ENABLE_SSH == 'true'
+        uses: danshui-git/debugger-action@main
+      
       - name: Github Sync to Gitee
         continue-on-error: true
         if: steps.cacheHash.outputs.cache-hit != 'true' || github.event.inputs.FORCE_MIRROR == 'true'
