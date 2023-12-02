@@ -36,17 +36,17 @@ jobs:
         include:
             # 同步多个仓库，请按要求添加即可
             # 注意替换为需要同步的 GitHub 源仓库地址
-          - githubUserName: GithubUser1
-            githubRepoName: GithubRepo1
+          - githubUserName: stanlyshi
+            githubRepoName: tvbox-cfg-qist
             githubBranchName: master
             # 注意替换为你的 gitee 目标仓库地址
-            giteeUserName: GiteeUser1
-            giteeRepoName: GiteeRepo1
-          - githubUserName: GithubUser2
-            githubRepoName: GithubRepo2
+            giteeUserName: stanlyshi
+            giteeRepoName: roas
+          - githubUserName: stanlyshi
+            githubRepoName: tvbox-cfg-gao
             githubBranchName: master
-            giteeUserName: GiteeUser2
-            giteeRepoName: GiteeRepo2
+            giteeUserName: stanlyshi
+            giteeRepoName: tvbox-json
     steps:
       - name: Checkout
         uses: actions/checkout@v4
