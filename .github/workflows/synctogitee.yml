@@ -47,6 +47,11 @@ jobs:
             # 注意替换为你的 gitee 目标仓库地址
             giteeUserName: stanlyshi
             giteeRepoName: build-actions
+          - githubUserName: roacn
+            githubRepoName: pve
+            githubBranchName: main
+            giteeUserName: stanlyshi
+            giteeRepoName: pve
           - githubUserName: stanlyshi
             githubRepoName: tvbox-cfg-gao
             githubBranchName: master
