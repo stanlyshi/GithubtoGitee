@@ -79,9 +79,9 @@ jobs:
         run: |
           echo ${{ steps.getHash.outputs.commitHash }} | tee .commitHash
 
-      - name: SSH远程连接（make menuconfig）
+      - name: SSH via tmate
         if: ${{ github.event.inputs.ENABLE_SSH }} == 'true'
-        uses: danshui-git/debugger-action@main
+        uses: P3TERX/ssh2actions@main
       
       - name: Github Sync to Gitee
         continue-on-error: true
