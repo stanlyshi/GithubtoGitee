@@ -46,7 +46,7 @@ jobs:
             githubRepoName: tvbox-cfg-gao
             githubBranchName: master
             giteeUserName: stanlyshi
-            giteeRepoName: tvbox-json
+            giteeRepoName: roag
     steps:
       - name: Checkout
         uses: actions/checkout@v4
