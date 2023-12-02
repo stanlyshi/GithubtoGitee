@@ -41,12 +41,12 @@ jobs:
         include:
             # 同步多个仓库，请按要求添加即可
             # 注意替换为需要同步的 GitHub 源仓库地址
-          - githubUserName: qist
-            githubRepoName: tvbox
-            githubBranchName: master
+          - githubUserName: roacn
+            githubRepoName: build-actions
+            githubBranchName: main
             # 注意替换为你的 gitee 目标仓库地址
             giteeUserName: stanlyshi
-            giteeRepoName: roas
+            giteeRepoName: build-actions
           - githubUserName: stanlyshi
             githubRepoName: tvbox-cfg-gao
             githubBranchName: master
