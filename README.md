@@ -2,6 +2,16 @@
 
 
 
+> **使用此仓库模板页面 `Use this template` 自行创建仓库。**
+>
+> **不宜过高频率同步至Gitee，避免可能的各种风险。**
+
+
+
+</br>
+
+
+
 ### 秘钥
 
 在仓库settings添加以下两个secrets：
@@ -11,7 +21,7 @@
 
 
 
-#### 1、添加 REPO_TOKEN
+#### 1、Github 添加 REPO_TOKEN
 
 右上角个人图标 -> `Settings` -> `Developer Settings` -> `Personal access tokens` -> `Tokens` -> `Generate new token`，填写相应名称，及选项，并复制生成的`token`；
 
@@ -19,7 +29,7 @@
 
 
 
-#### 2、添加 SSH_PRIVATE_KEY
+#### 2、Github 添加 SSH_PRIVATE_KEY
 
 首先，[生成SSH密钥](https://docs.github.com/zh/authentication/connecting-to-github-with-ssh/generating-a-new-ssh-key-and-adding-it-to-the-ssh-agent?platform=linux)（可点击此处参考）；
 
@@ -61,7 +71,9 @@ pZZzg3TmkHC4+SY9iXvdARvC05wNWshbgj2XVA/NwQqXT83aAeGXoLMrp65sHoW1/Wwwwz
 
 
 
-3、将公钥打印出`cat ~/.ssh/id_rsa.pub`，并复制公钥
+#### 3、Gitee 添加 SSH公钥
+
+将公钥打印出`cat ~/.ssh/id_rsa.pub`，并复制公钥
 
 ```shell
 root@debian:~/.ssh# cat ~/.ssh/id_rsa.pub
@@ -72,21 +84,36 @@ ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAACAQDBLsbAHgz3ob30/A7NlSXXs4bpSTxLI+TV3OLDhfvR
 
 
 
+</br>
+
+
+
 ### 设置
 
-修改需要同步的Github源仓库、Gitee目标仓库
+修改需要同步的Github源仓库、Gitee目标仓库；
+
+多个仓库同时同步，按相同格式在后面追加；
 
 ```yaml
   matrix:
     include:
         # 注意替换为需要同步的 GitHub 源仓库地址
-      - githubUserName: GithubUser			# Github源仓库用户名
-        githubRepoName: Repository			# Github源仓库名称
+      - githubUserName: GithubUser1			# Github源仓库用户名
+        githubRepoName: Repository1			# Github源仓库名称
         githubBranchName: master			# Github源仓库分支
         # 注意替换为你的 Gitee 目标仓库地址
-        giteeUserName: GiteeUser			# Gitee目标仓库用户名
-        giteeRepoName: Repository			# Gitee目标仓库名称
+        giteeUserName: GiteeUser1			# Gitee目标仓库用户名
+        giteeRepoName: Repository1			# Gitee目标仓库名称
+      - githubUserName: GithubUser2
+        githubRepoName: GithubRepo2
+        githubBranchName: master
+        giteeUserName: GiteeUser2
+        giteeRepoName: GiteeRepo2
 ```
+
+
+
+</br>
 
 
 
@@ -94,7 +121,7 @@ ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAACAQDBLsbAHgz3ob30/A7NlSXXs4bpSTxLI+TV3OLDhfvR
 
 运行actions即可同步至Gitee仓库，同时会将Github源仓库最新提交的commit值保存至actions缓存；
 
-如果因解析导致同步Gitee仓库失败，可删除缓存、或在workflow启动强制同步，来进行同步。
+如因解析gitee.com失败(ssh: Could not resolve hostname gitee.com: Try again)导致同步Gitee仓库失败，可删除缓存、或在workflow启动强制同步，来进行同步。
 
 
 
