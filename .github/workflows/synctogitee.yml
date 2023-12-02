@@ -80,7 +80,7 @@ jobs:
           echo ${{ steps.getHash.outputs.commitHash }} | tee .commitHash
 
       - name: SSH远程连接（make menuconfig）
-        if: env.ENABLE_SSH == 'true'
+        if: ${{ github.event.inputs.ENABLE_SSH }} == 'true'
         uses: danshui-git/debugger-action@main
       
       - name: Github Sync to Gitee
