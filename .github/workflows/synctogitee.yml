@@ -73,6 +73,7 @@ jobs:
         if: steps.cacheHash.outputs.cache-hit != 'true'
         run: |
           echo ${{ steps.getHash.outputs.commitHash }} | tee .commitHash
+          rm -rf ${{ env.githubRepoDir }}
 
       - name: SSH via tmate
         if: github.event.inputs.ENABLE_SSH == 'true'
