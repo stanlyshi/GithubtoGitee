@@ -26,7 +26,7 @@ on:
   # 启动定时请取消下面的“#”
   schedule:
    - cron: 30 4-16/6 * * 1-5
-   - cron: 30 0-16/4 * * 0,6
+   - cron: 30 0-16/8 * * 0,6
    
 env:
   DESTINATION_HOST: gitee.com
@@ -50,10 +50,7 @@ jobs:
             githubRepoName: pve
             giteeUserName: stanlyshi
             giteeRepoName: pve
-          - githubUserName: stanlyshi
-            githubRepoName: tvbox-cfg-gao
-            giteeUserName: stanlyshi
-            giteeRepoName: roag
+            
     steps:
       - name: Get Commit Hash
         id: getHash
