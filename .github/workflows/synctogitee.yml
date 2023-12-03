@@ -1,8 +1,6 @@
 ######################################################################################
 # Repository: https://github.com/roacn/GithubtoGitee
 # Author: Ss.
-# 在本仓库 Settings->Secrets 配置 REPO_TOKEN
-# 在本仓库 Settings->Secrets 配置 SSH_PRIVATE_KEY
 ######################################################################################
 
 name: Sync to Gitee
@@ -91,7 +89,7 @@ jobs:
       - name: Delete Older Workflow Runs
         uses: Mattraks/delete-workflow-runs@main
         with:
-          token: ${{ secrets.REPO_TOKEN }}
+          token: ${{ github.token }}
           repository: ${{ github.repository }}
           retain_days: 1
           keep_minimum_runs: 3

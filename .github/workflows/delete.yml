@@ -1,5 +1,5 @@
 #=======================================================================================================================
-# Description: Delete older releases and artifacts
+# Description: Delete Workflows
 #=======================================================================================================================
 
 name: Delete Releases and Workflows
@@ -42,7 +42,7 @@ jobs:
     - name: Delete Older Workflow Runs
       uses: Mattraks/delete-workflow-runs@main
       with:
-        token: ${{ secrets.REPO_TOKEN }}
+        token: ${{ github.token }}
         repository: ${{ github.repository }}
         retain_days: ${{ env.KEEP_DAY }}
         keep_minimum_runs: ${{ env.KEEP_MININUM_RUNS }}
