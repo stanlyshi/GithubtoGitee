@@ -45,6 +45,10 @@ jobs:
             giteeUserName: stanlyshi
             giteeRepoName: build-actions
           - githubUserName: roacn
+            githubRepoName: openwrt-packages
+            giteeUserName: stanlyshi
+            giteeRepoName: openwrt-packages
+          - githubUserName: roacn
             githubRepoName: pve
             giteeUserName: stanlyshi
             giteeRepoName: pve
