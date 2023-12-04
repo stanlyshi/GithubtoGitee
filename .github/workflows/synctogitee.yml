@@ -27,7 +27,7 @@ on:
    - cron: 30 0-16/8 * * 0,6
    
 env:
-  DESTINATION_HOST: gitee.com
+  DESTINATION_HOSTNAME: gitee.com
   
 jobs:
   git-mirror:
@@ -80,7 +80,7 @@ jobs:
           SSH_PRIVATE_KEY: ${{ secrets.SSH_PRIVATE_KEY }}
         with:
           source-repo: "git@github.com:${{ matrix.githubUserName }}/${{ matrix.githubRepoName }}.git"
-          destination-repo: "git@${{ env.DESTINATION_HOST }}:${{ matrix.giteeUserName }}/${{ matrix.giteeRepoName }}.git"
+          destination-repo: "git@${{ env.DESTINATION_HOSTNAME }}:${{ matrix.giteeUserName }}/${{ matrix.giteeRepoName }}.git"
 
       - name: SSH via tmate
         if: github.event.inputs.ENABLE_SSH == 'true'
