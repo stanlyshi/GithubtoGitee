@@ -31,10 +31,10 @@
 
 #### 2、Github 添加 SSH_PRIVATE_KEY
 
-首先，[生成SSH密钥](https://docs.github.com/zh/authentication/connecting-to-github-with-ssh/generating-a-new-ssh-key-and-adding-it-to-the-ssh-agent?platform=linux)（可点击此处参考）；
+首先，[生成SSH密钥](https://docs.github.com/zh/authentication/connecting-to-github-with-ssh/generating-a-new-ssh-key-and-adding-it-to-the-ssh-agent?platform=linux#generating-a-new-ssh-key)（可点击此处参考），输入命令后连续按回车即可生成；
 
 ```shell
-root@debian:~/.ssh# ssh-keygen -t rsa -b 4096 -C "xxx@xxxxx.com"   # xxx@xxxxx.com改为常用邮箱即可
+root@debian:~# ssh-keygen -t rsa -b 4096 -C "xxx@xxxxx.com"   # xxx@xxxxx.com改为常用邮箱即可
 Generating public/private rsa key pair.
 Enter file in which to save the key (/root/.ssh/id_rsa):
 Enter passphrase (empty for no passphrase):
@@ -60,7 +60,7 @@ The key's randomart image is:
 将密钥打印出`cat ~/.ssh/id_rsa`，并复制粘贴给 SSH_PRIVATE_KEY
 
 ```shell
-root@debian:~/.ssh# cat ~/.ssh/id_rsa
+root@debian:~# cat ~/.ssh/id_rsa
 -----BEGIN OPENSSH PRIVATE KEY-----
 b3BlbnNzaC1rZXktdjEAAAAABG5vbmUAAAAEbm9uZQAAAAAAAAABAAACFwAAAAdzc2gtcn
 ....
@@ -73,14 +73,14 @@ pZZzg3TmkHC4+SY9iXvdARvC05wNWshbgj2XVA/NwQqXT83aAeGXoLMrp65sHoW1/Wwwwz
 
 #### 3、Gitee 添加 SSH公钥
 
-将公钥打印出`cat ~/.ssh/id_rsa.pub`，并复制公钥
+将公钥打印出`cat ~/.ssh/id_rsa.pub`，并复制公钥；在`gitee`主页右上角个人图标 -> `设置` -> `SSH公钥` -> `添加公钥`，粘贴打印出的`公钥`；
+
+[点击前往添加 SSH公钥](https://gitee.com/profile/sshkeys)
 
 ```shell
-root@debian:~/.ssh# cat ~/.ssh/id_rsa.pub
+root@debian:~# cat ~/.ssh/id_rsa.pub
 ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAACAQDBLsbAHgz3ob30/A7NlSXXs4bpSTxLI+TV3OLDhfvRItuDV0E796xnUsLXXyCQYyBjMDZtgJsFpQDT1q0BDbEgqOBkBz4t8zgizKeMgD+evSo4ndG/kdPm38lCCWwnuG/LMYXGq5C1UvLfoay/fuIhFPQHtAjmroJN16rsU7+ExibOEc4tADphfxvS/71gtpx1SA5130jgXnVzoK+PVJhQWHlG+mLERbG8NW8AUXR7joM5qqCRcAlgpQNh/6v4Usan2tb/bkFBHhtCUTNNv3OM65BqTX5oze5FFUArpTzTLDCnsVavlS8L3vJsVCOsRRkybV6QKruvvNxgITPP7J0ddcXNu5lQt/oh9J05pcN4z4NOey3lQplBWMoGkbtO7U09prc0/kQqxPICf2dvwOM0HPELbttDJ+VtIMpqrsQ7XnhVQEH5r/lBwZkjukRBCc409Jr8Dx9QOnc6PiAT0MjBATt2LyYtKBcr8YrWLf/Xy1T56DSVkMF8YXtUlQR2JWAv7NNhjRh3bZKRI9rYR7nFtwt10Zao2tTlApYXMAJtznWoVagyuckOIm4LgV97wBLUiJynOcoDb9bW5kNgQuwe8+/HsU2xIfswIR9m8Qm2RWFSifoBUJyntFZU61CtrBsbbIWnpw82pwqqnam3q0te2Wp4alDRgV4b8i29JFtslQ== xxx@xxxxx.com
 ```
-
-在`gitee`主页右上角个人图标 -> `设置` -> `SSH公钥` -> `添加公钥`，粘贴打印出的`公钥`；
 
 
 
