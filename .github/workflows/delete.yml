@@ -2,7 +2,7 @@
 # Description: Delete Workflows
 #=======================================================================================================================
 
-name: Delete Releases and Workflows
+name: Delete Workflows
 
 on:
   workflow_dispatch:
