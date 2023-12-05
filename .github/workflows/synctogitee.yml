@@ -55,7 +55,7 @@ jobs:
           - githubUserName: stanlyshi
             githubRepoName: TVBox-build
             giteeUserName: stanlyshi
-            giteeRepoName: TVBox-build
+            giteeRepoName: tvbox-build
             
     steps:
       - name: Get Commit Hash
