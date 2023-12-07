@@ -56,18 +56,6 @@ jobs:
             githubRepoName: TVBox-build
             giteeUserName: stanlyshi
             giteeRepoName: tvbox-build
-          - githubUserName: roacn
-            githubRepoName: awesome-c-cn
-            giteeUserName: stanlyshi
-            giteeRepoName: awesome-c-cn
-          - githubUserName: roacn
-            githubRepoName: awesome-cpp-cn
-            giteeUserName: stanlyshi
-            giteeRepoName: awesome-cpp-cn
-          - githubUserName: roacn
-            githubRepoName: awesome-python-cn
-            giteeUserName: stanlyshi
-            giteeRepoName: awesome-python-cn
             
     steps:
       - name: Get Commit Hash
