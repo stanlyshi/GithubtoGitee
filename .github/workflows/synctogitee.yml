@@ -52,10 +52,6 @@ jobs:
             githubRepoName: pve
             giteeUserName: stanlyshi
             giteeRepoName: pve
-          - githubUserName: stanlyshi
-            githubRepoName: TVBox-build
-            giteeUserName: stanlyshi
-            giteeRepoName: tvbox-build
             
     steps:
       - name: Get Commit Hash
