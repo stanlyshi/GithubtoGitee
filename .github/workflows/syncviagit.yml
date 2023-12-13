@@ -36,24 +36,9 @@ jobs:
         include:
             # 同步多个仓库，请按要求添加即可
             # 替换为需要同步的 GitHub 源仓库地址
-          - githubUserName: roacn
-            githubRepoName: build-actions
-            # 替换为目标仓库地址
-            destHostName: gitee.com
-            destUserName: stanlyshi
-            destRepoName: build-actions
-          - githubUserName: roacn
-            githubRepoName: openwrt-packages
-            destHostName: gitee.com
-            destUserName: stanlyshi
-            destRepoName: openwrt-packages
-          - githubUserName: roacn
-            githubRepoName: pve
-            destHostName: gitee.com
-            destUserName: stanlyshi
-            destRepoName: pve
           - githubUserName: stanlyshi
             githubRepoName: tvbox-cfg
+            # 替换为目标仓库地址
             destHostName: gitcode.com
             destUserName: roa
             destRepoName: roas
