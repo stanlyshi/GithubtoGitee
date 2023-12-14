@@ -99,29 +99,33 @@ ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAACAQDBLsbAHgz3ob30/A7NlSXXs4bpSTxLI+TV3OLDhfvR
 ```yaml
   matrix:
     include:
-        # 注意替换为需要同步的 GitHub 源仓库地址
-      - githubUserName: GithubUser1			# Github源仓库用户名
-        githubRepoName: Repository1			# Github源仓库名称
-        # 注意替换为你的 Gitee 目标仓库地址
-        giteeUserName: GiteeUser1			  # Gitee目标仓库用户名
-        giteeRepoName: GiteeRepo1			  # Gitee目标仓库名称
-        # 同步多个仓库，请按要求追加即可
-      - githubUserName: GithubUser2
-        githubRepoName: GithubRepo2
-        giteeUserName: GiteeUser2
-        giteeRepoName: GiteeRepo2
+        # 同步多个仓库，按格式在后面追加填写
+        # github_repo的值，替换为待同步的GitHub源仓库地址；
+        # dest_repo的值，替换为Gitee目标仓库地址；
+      - github_repo: github_user_x/github_repo_x    # Github源仓库
+        dest_hostname: gitee.com                    # 目标网址
+        dest_repo: dest_user_x/dest_repo_x          # 目标仓库
+      - github_repo: github_user_xx/github_repo_xx  # Github源仓库
+        dest_hostname: gitcode.com                  # 目标网址
+        dest_repo: dest_user_xx/dest_repo_xx        # 目标仓库
 ```
 
+> 注：可同步至`gitee.com`，`gitea.com`，`gitcode.com`等使用git、ssh连接的仓库，参照`gitee.com`的方式添加`ssh公钥`即可。
 
 
 
 
-  #### 2、开启定时同步，请取消下面的3个“#”
+
+</br>
+
+
+
+  #### 2、开启定时同步，请取消下面的“#”
 
 ```yml
   #schedule:
-   #- cron: 30 4-16/3 * * 1-5
-   #- cron: 30 0-16/3 * * 0,6
+   #- cron: 30 4-16/6 * * 1-5
+   #- cron: 30 0-16/8 * * 0,6
 ```
 
 
@@ -147,4 +151,3 @@ ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAACAQDBLsbAHgz3ob30/A7NlSXXs4bpSTxLI+TV3OLDhfvR
   如因解析gitee.com失败(`ssh: Could not resolve hostname gitee.com: Try again`)导致同步Gitee仓库失败，可删除缓存、或在workflow启动强制同步，来进行同步。
 
 - Gitee仓库自带Github同步至Gitee仓库功能，也可以尝试下。
-
