@@ -24,9 +24,6 @@ on:
    - cron: 30 4-16/6 * * 1-5
    - cron: 30 0-16/8 * * 0,6
    
-#env:
-  #DESTINATION_HOSTNAME: gitee.com
-  
 jobs:
   git-mirror:
     runs-on: ubuntu-latest
