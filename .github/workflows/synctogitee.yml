@@ -6,8 +6,6 @@
 name: Sync to Gitee
 
 on:
-  #push:
-    #branches: [master]
   workflow_dispatch:
     inputs:
       FORCE_MIRROR:
@@ -26,8 +24,8 @@ on:
    - cron: 30 4-16/6 * * 1-5
    - cron: 30 0-16/8 * * 0,6
    
-env:
-  DESTINATION_HOSTNAME: gitee.com
+#env:
+  #DESTINATION_HOSTNAME: gitee.com
   
 jobs:
   git-mirror:
@@ -41,10 +39,13 @@ jobs:
             # github_repo的值，替换为待同步的GitHub源仓库地址；
             # dest_repo的值，替换为Gitee目标仓库地址；
           - github_repo: roacn/build-actions
+            dest_hostname: gitee.com
             dest_repo: stanlyshi/build-actions
           - github_repo: roacn/openwrt-packages
+            dest_hostname: gitee.com
             dest_repo: stanlyshi/openwrt-packages
           - github_repo: roacn/pve
+            dest_hostname: gitee.com
             dest_repo: stanlyshi/pve
             
     steps:
@@ -78,7 +79,7 @@ jobs:
           SSH_PRIVATE_KEY: ${{ secrets.SSH_PRIVATE_KEY }}
         with:
           source-repo: "git@github.com:${{ matrix.github_repo }}.git"
-          destination-repo: "git@${{ env.DESTINATION_HOSTNAME }}:${{ matrix.dest_repo }}.git"
+          destination-repo: "git@${{ matrix.dest_hostname }}:${{ matrix.dest_repo }}.git"
 
       - name: SSH via tmate
         if: github.event.inputs.ENABLE_SSH == 'true'
