@@ -14,7 +14,7 @@
 
 ### 秘钥
 
-在仓库settings添加以下两个secrets：
+在仓库`Settings`添加以下两个secrets：
 
 - REPO_TOKEN
 - SSH_PRIVATE_KEY
