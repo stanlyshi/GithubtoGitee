@@ -38,32 +38,32 @@ jobs:
       matrix:
         include:
             # 同步多个仓库，按格式在后面追加填写
-            # githubRepo的值，替换为待同步的GitHub源仓库地址；
-            # destRepo的值，替换为Gitee目标仓库地址；
-          - githubRepo: roacn/build-actions
-            destRepo: stanlyshi/build-actions
-          - githubRepo: roacn/openwrt-packages
-            destRepo: stanlyshi/openwrt-packages
-          - githubRepo: roacn/pve
-            destRepo: stanlyshi/pve
+            # github_repo的值，替换为待同步的GitHub源仓库地址；
+            # dest_repo的值，替换为Gitee目标仓库地址；
+          - github_repo: roacn/build-actions
+            dest_repo: stanlyshi/build-actions
+          - github_repo: roacn/openwrt-packages
+            dest_repo: stanlyshi/openwrt-packages
+          - github_repo: roacn/pve
+            dest_repo: stanlyshi/pve
             
     steps:
       - name: Get Commit Hash
         id: getHash
         run: |
-          githubRepoDir=$(echo ${{ matrix.githubRepo }} | sed 's|/|-|')
-          echo "githubRepoDir=$githubRepoDir" >> $GITHUB_ENV
-          git clone --depth 1 https://github.com/${{ matrix.githubRepo }} $githubRepoDir
-          cd $githubRepoDir
+          github_repo_dir=$(echo ${{ matrix.github_repo }} | sed 's|/|-|')
+          echo "github_repo_dir=$github_repo_dir" >> $GITHUB_ENV
+          git clone --depth 1 https://github.com/${{ matrix.github_repo }} $github_repo_dir
+          cd $github_repo_dir
           echo "commitHash=$(git rev-parse HEAD)" >> $GITHUB_OUTPUT
-          rm -rf $githubRepoDir
+          rm -rf $github_repo_dir
           
       - name: Compare Commit Hash
         id: cacheHash
         uses: actions/cache@v3
         with:
           path: .commitHash
-          key: ${{ env.githubRepoDir }}-${{ steps.getHash.outputs.commitHash }}
+          key: ${{ env.github_repo_dir }}-${{ steps.getHash.outputs.commitHash }}
           
       - name: Generate Commit Hash
         if: steps.cacheHash.outputs.cache-hit != 'true'
@@ -77,8 +77,8 @@ jobs:
         env:
           SSH_PRIVATE_KEY: ${{ secrets.SSH_PRIVATE_KEY }}
         with:
-          source-repo: "git@github.com:${{ matrix.githubRepo }}.git"
-          destination-repo: "git@${{ env.DESTINATION_HOSTNAME }}:${{ matrix.destRepo }}.git"
+          source-repo: "git@github.com:${{ matrix.github_repo }}.git"
+          destination-repo: "git@${{ env.DESTINATION_HOSTNAME }}:${{ matrix.dest_repo }}.git"
 
       - name: SSH via tmate
         if: github.event.inputs.ENABLE_SSH == 'true'
