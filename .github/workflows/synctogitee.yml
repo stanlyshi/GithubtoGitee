@@ -44,6 +44,9 @@ jobs:
           - github_repo: roacn/pve
             dest_hostname: gitee.com
             dest_repo: stanlyshi/pve
+          - github_repo: stanlyshi/tvbox-cfg
+            dest_hostname: gitcode.com
+            dest_repo: roa/roas
             
     steps:
       - name: Get Commit Hash
