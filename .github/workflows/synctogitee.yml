@@ -38,28 +38,21 @@ jobs:
       matrix:
         include:
             # 同步多个仓库，请按要求添加即可
-            # 注意替换为需要同步的 GitHub 源仓库地址
-          - githubUserName: roacn
-            githubRepoName: build-actions
-            # 注意替换为你的 gitee 目标仓库地址
-            giteeUserName: stanlyshi
-            giteeRepoName: build-actions
-          - githubUserName: roacn
-            githubRepoName: openwrt-packages
-            giteeUserName: stanlyshi
-            giteeRepoName: openwrt-packages
-          - githubUserName: roacn
-            githubRepoName: pve
-            giteeUserName: stanlyshi
-            giteeRepoName: pve
+            # githubRepo 替换为待同步的 GitHub 源仓库地址；destRepo 替换为 Gitee 目标仓库地址
+          - githubRepo: roacn/build-actions
+            destRepo: stanlyshi/build-actions
+          - githubRepo: roacn/openwrt-packages
+            destRepo: stanlyshi/openwrt-packages
+          - githubRepo: roacn/pve
+            destRepo: stanlyshi/pve
             
     steps:
       - name: Get Commit Hash
         id: getHash
         run: |
-          githubRepoDir=${{ matrix.githubUserName }}-${{ matrix.githubRepoName }}
+          githubRepoDir=$(echo ${{ matrix.githubRepo }} | sed 's|/|-|')
           echo "githubRepoDir=$githubRepoDir" >> $GITHUB_ENV
-          git clone --depth 1 https://github.com/${{ matrix.githubUserName }}/${{ matrix.githubRepoName }} $githubRepoDir
+          git clone --depth 1 https://github.com/${{ matrix.githubRepo }} $githubRepoDir
           cd $githubRepoDir
           echo "commitHash=$(git rev-parse HEAD)" >> $GITHUB_OUTPUT
           rm -rf $githubRepoDir
@@ -83,8 +76,8 @@ jobs:
         env:
           SSH_PRIVATE_KEY: ${{ secrets.SSH_PRIVATE_KEY }}
         with:
-          source-repo: "git@github.com:${{ matrix.githubUserName }}/${{ matrix.githubRepoName }}.git"
-          destination-repo: "git@${{ env.DESTINATION_HOSTNAME }}:${{ matrix.giteeUserName }}/${{ matrix.giteeRepoName }}.git"
+          source-repo: "git@github.com:${{ matrix.githubRepo }}.git"
+          destination-repo: "git@${{ env.DESTINATION_HOSTNAME }}:${{ matrix.destRepo }}.git"
 
       - name: SSH via tmate
         if: github.event.inputs.ENABLE_SSH == 'true'
