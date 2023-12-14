@@ -37,8 +37,9 @@ jobs:
       fail-fast: false
       matrix:
         include:
-            # 同步多个仓库，请按要求添加即可
-            # githubRepo 替换为待同步的 GitHub 源仓库地址；destRepo 替换为 Gitee 目标仓库地址
+            # 同步多个仓库，按格式在后面追加填写
+            # githubRepo的值，替换为待同步的GitHub源仓库地址；
+            # destRepo的值，替换为Gitee目标仓库地址；
           - githubRepo: roacn/build-actions
             destRepo: stanlyshi/build-actions
           - githubRepo: roacn/openwrt-packages
