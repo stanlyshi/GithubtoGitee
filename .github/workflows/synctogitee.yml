@@ -84,12 +84,3 @@ jobs:
       - name: SSH via tmate
         if: github.event.inputs.ENABLE_SSH == 'true'
         uses: P3TERX/ssh2actions@main
-        
-      - name: Delete Older Workflow Runs
-        uses: Mattraks/delete-workflow-runs@main
-        with:
-          token: ${{ github.token }}
-          repository: ${{ github.repository }}
-          retain_days: 1
-          keep_minimum_runs: 3
-          
