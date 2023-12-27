@@ -17,8 +17,8 @@ on:
         required: true
         default: '0'
         type: string
-  #schedule:
-   #- cron: 0 20 * * *
+  schedule:
+   - cron: 0 20 * * *
    
 jobs:
   build:
